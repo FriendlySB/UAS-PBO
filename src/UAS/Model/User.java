@@ -2,43 +2,82 @@
 package UAS.Model;
 
 public class User {
-    private int idUser;
-    private String username;
-    private String alamat;
+    private int userId;
+    private String password;
+    private String userName;
+    private String userEmail;
+    private String userGender;
+    private CategoryUser userCategory;
+    private int userFollowers;
 
     public User() {
         
+    } 
+
+    public User(int userId, String password, String userName, String userEmail, String userGender, CategoryUser userCategory, int userFollowers) {
+        this.userId = userId;
+        this.password = password;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userGender = userGender;
+        this.userCategory = userCategory;
+        this.userFollowers = userFollowers;
     }
 
-    public User(int idUser, String username, String alamat) {
-        this.idUser = idUser;
-        this.username = username;
-        this.alamat = alamat;
-    }
-    
-
-    public String getUsername() {
-        return username;
+    public int getUserFollowers() {
+        return userFollowers;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserFollowers(int userFollowers) {
+        this.userFollowers = userFollowers;
     }
 
-    public int getIdUser() {
-        return idUser;
+    public String getUserGender() {
+        return userGender;
     }
 
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
+    public void setUserGender(String userGender) {
+        this.userGender = userGender;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public CategoryUser getUserCategory() {
+        return userCategory;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setUserCategory(CategoryUser userCategory) {
+        this.userCategory = userCategory;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     
