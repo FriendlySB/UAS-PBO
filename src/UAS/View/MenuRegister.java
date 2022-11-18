@@ -106,13 +106,22 @@ public class MenuRegister {
                     JOptionPane.showMessageDialog(null, "Username/Email Anda sudah terdaftar!", 
                                "Message", JOptionPane.WARNING_MESSAGE); 
                 } else {
-                    if(sql.insertNewUser(user) == true){
-                    JOptionPane.showMessageDialog(null, "Registrasi Berhasil", 
-                               "Message", JOptionPane.INFORMATION_MESSAGE); 
+                    if(username.equals("") || password.equals("")||
+                            email.equals("")||gender.equals("")||
+                            kategori.equals("")){
+                        JOptionPane.showMessageDialog(null, "Ada data kosong!", 
+                                       "Message", JOptionPane.WARNING_MESSAGE); 
+                        
                     } else {
-                        JOptionPane.showMessageDialog(null, "Registrasi Gagal!", 
-                                   "Message", JOptionPane.WARNING_MESSAGE); 
+                        if(sql.insertNewUser(user) == true){
+                        JOptionPane.showMessageDialog(null, "Registrasi Berhasil", 
+                                   "Message", JOptionPane.INFORMATION_MESSAGE); 
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Registrasi Gagal!", 
+                                       "Message", JOptionPane.WARNING_MESSAGE); 
+                        }
                     }
+                    
                 }
             }
         });
