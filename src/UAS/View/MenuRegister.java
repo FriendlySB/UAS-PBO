@@ -16,8 +16,9 @@ public class MenuRegister {
     
     Controller controller = new Controller();
     Sql sql = new Sql();
-
+    
     public MenuRegister() {
+
         JFrame frame = new JFrame();
         frame.setSize(600, 400);
         frame.setLocationRelativeTo(null);
@@ -33,22 +34,30 @@ public class MenuRegister {
         frame.add(labelUsername);
         frame.add(inputUsername);
         
+        //Password
+        JLabel labelPass = new JLabel("Input Password");
+        labelPass.setBounds(20, 50, 150, 25);
+        JPasswordField inputPass = new JPasswordField();
+        inputPass.setBounds(180, 50, 150, 25);
+        frame.add(labelPass);
+        frame.add(inputPass);
+        
         //Email
         JLabel labelEmail = new JLabel("Input Email");
-        labelEmail.setBounds(20, 50, 150, 25);
-        JTextField inputAlamat = new JTextField();
-        inputAlamat.setBounds(180, 50, 150, 25);
+        labelEmail.setBounds(20, 80, 150, 25);
+        JTextField inputEmail = new JTextField();
+        inputEmail.setBounds(180, 80, 150, 25);
         frame.add(labelEmail);
-        frame.add(inputAlamat);
+        frame.add(inputEmail);
         
         //Kelamin
         JLabel labelKelamin = new JLabel();
         labelKelamin.setText("Jenis Kelamin: ");
-        labelKelamin.setBounds(20, 80, 125, 25);
+        labelKelamin.setBounds(20, 110, 125, 25);
         JRadioButton rPria = new JRadioButton("Pria");
         JRadioButton rWanita = new JRadioButton("Wanita");
-        rPria.setBounds(180, 80, 60, 25);
-        rWanita.setBounds(250, 80, 70, 25);
+        rPria.setBounds(180, 110, 60, 25);
+        rWanita.setBounds(250, 110, 70, 25);
         ButtonGroup radioKelamin = new ButtonGroup();
         radioKelamin.add(rPria);
         radioKelamin.add(rWanita);
@@ -63,9 +72,9 @@ public class MenuRegister {
             arrCategory[i] =  listCategory.get(i).getCategoryName();
         }
         JLabel labelKategori = new JLabel("Pilih kategori user");
-        labelKategori.setBounds(20, 110, 150, 25);
+        labelKategori.setBounds(20, 140, 150, 25);
         JComboBox comboBoxCategory = new JComboBox(arrCategory);
-        comboBoxCategory.setBounds(180, 110, 150, 25);
+        comboBoxCategory.setBounds(180, 140, 150, 25);
         frame.add(labelKategori);
         frame.add(comboBoxCategory);
         
@@ -75,6 +84,28 @@ public class MenuRegister {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 
+                int id = sql.getIdUser();
+                String username = inputUsername.getText();
+                String password = new String(inputPass.getPassword());
+                String email = inputEmail.getText();
+                int idKategori = comboBoxCategory.getSelectedIndex() + 1;
+                String kategori = (String) comboBoxCategory.getItemAt(comboBoxCategory.getSelectedIndex());
+                String gender = "";
+                if(rPria.isSelected()){
+                    gender = "Pria";
+                }
+                if(rWanita.isSelected()){
+                    gender = "Wanita";
+                }
+                
+                User user = new User(id,password,username,email,gender,new CategoryUser(idKategori,kategori),0);
+                if(sql.insertNewUser(user) == true){
+                    JOptionPane.showMessageDialog(null, "Registrasi Berhasil", 
+                               "Message", JOptionPane.INFORMATION_MESSAGE); 
+                } else {
+                    JOptionPane.showMessageDialog(null, "Registrasi Gagal!", 
+                               "Message", JOptionPane.WARNING_MESSAGE); 
+                }
             }
         });
         frame.addWindowListener(new WindowAdapter() { 

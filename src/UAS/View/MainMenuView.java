@@ -27,6 +27,7 @@ public class MainMenuView {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.dispose();
+                new MenuLogin();
             }
         });
         frame.add(buttonLogin);
@@ -37,19 +38,21 @@ public class MainMenuView {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.dispose();
-            }
-        });
-        
-        JButton buttonKategori = new JButton("Register");
-        buttonRegister.setBounds(150, 175, 300, 50);
-        buttonRegister.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                frame.dispose();
                 new MenuRegister();
             }
         });
         frame.add(buttonRegister);
+        
+        JButton buttonLihat = new JButton("Lihat Data Pengguna");
+        buttonLihat.setBounds(150, 250, 300, 50);
+        buttonLihat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                frame.dispose();
+                new MenuLihatDataPengguna();
+            }
+        });
+        frame.add(buttonLihat);
     }
     
 }
