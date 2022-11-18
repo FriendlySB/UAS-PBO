@@ -77,6 +77,7 @@ public class Sql {
             ResultSet rs = stmt.executeQuery();
             while(rs.next()){
                 User temp = new User();
+                temp.setUserId(rs.getInt("userId"));
                 temp.setUserName(rs.getString("userName"));
                 temp.setPassword(rs.getString("password"));
                 temp.setUserEmail(rs.getString("userEmail"));

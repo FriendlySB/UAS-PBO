@@ -99,12 +99,20 @@ public class MenuRegister {
                 }
                 
                 User user = new User(id,password,username,email,gender,new CategoryUser(idKategori,kategori),0);
-                if(sql.insertNewUser(user) == true){
+                
+                boolean cekDataSama = controller.cekDataSama(username, email);
+                
+                if(cekDataSama == false){
+                    JOptionPane.showMessageDialog(null, "Username/Email Anda sudah terdaftar!", 
+                               "Message", JOptionPane.WARNING_MESSAGE); 
+                } else {
+                    if(sql.insertNewUser(user) == true){
                     JOptionPane.showMessageDialog(null, "Registrasi Berhasil", 
                                "Message", JOptionPane.INFORMATION_MESSAGE); 
-                } else {
-                    JOptionPane.showMessageDialog(null, "Registrasi Gagal!", 
-                               "Message", JOptionPane.WARNING_MESSAGE); 
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Registrasi Gagal!", 
+                                   "Message", JOptionPane.WARNING_MESSAGE); 
+                    }
                 }
             }
         });

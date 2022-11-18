@@ -33,4 +33,16 @@ public class Controller {
         Object data[] = {id,username,password,gender,email,kategori,follower};
         return data;
     }
+    
+    public boolean cekDataSama(String username, String email){
+        ArrayList<User> listUser = new ArrayList<>(sql.getAllUser());
+        for(int i = 0; i < listUser.size(); i++){
+            if(username.equals(listUser.get(i).getUserName())){
+                if(email.equals(listUser.get(i).getUserEmail())){
+                    return false;
+                }   
+            }
+        }
+        return true;
+    }
 }
