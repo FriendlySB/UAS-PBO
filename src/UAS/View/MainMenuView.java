@@ -15,33 +15,41 @@ public class MainMenuView {
         frame.setLocationRelativeTo(null);
         frame.setLayout(null);
         frame.setVisible(true);
-        frame.setTitle("Main Menu User");
+        frame.setTitle("Main Menu");
         
         JLabel judul = new JLabel("Main Menu");
         judul.setBounds(250, 10, 100, 20);
         frame.add(judul);
         
-        JButton btnMenu1 = new JButton("Menu 1");
-        btnMenu1.setBounds(150, 100, 300, 50);
-        btnMenu1.addActionListener(new ActionListener() {
+        JButton buttonLogin = new JButton("Login");
+        buttonLogin.setBounds(150, 100, 300, 50);
+        buttonLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.dispose();
-                new Menu1();
             }
         });
-        frame.add(btnMenu1);
+        frame.add(buttonLogin);
         
-        JButton btnMenu2 = new JButton("Menu 2");
-        btnMenu2.setBounds(150, 175, 300, 50);
-        btnMenu2.addActionListener(new ActionListener() {
+        JButton buttonRegister = new JButton("Register");
+        buttonRegister.setBounds(150, 175, 300, 50);
+        buttonRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 frame.dispose();
-                new Menu1();
             }
         });
-        frame.add(btnMenu2);
+        
+        JButton buttonKategori = new JButton("Register");
+        buttonRegister.setBounds(150, 175, 300, 50);
+        buttonRegister.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                frame.dispose();
+                new MenuRegister();
+            }
+        });
+        frame.add(buttonRegister);
     }
     
 }
